@@ -23,6 +23,11 @@ class PersonalApoyo(Personal):
 
     def toJSON(self):
         d = super().toJSON()
-        d["__atributos__"]["antiguedad"] = self.__antiguedad
-        d["__atributos__"]["categoria"] = self.__categoria
+        d["__atributos__"]["categoria"] = self.getCategoria()
         return d
+    
+
+    def __str__(self):
+        cadena = super().__str__()
+        cadena += "Categoria: {0}\n".format(self.__categoria)
+        return cadena

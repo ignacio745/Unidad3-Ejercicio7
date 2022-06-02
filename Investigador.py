@@ -24,3 +24,10 @@ class Investigador(Personal):
         d["__atributos__"]["areaInvestigacion"] = self.__areaInvestigacion
         d["__atributos__"]["tipoInvestigacion"] = self.__tipoInvestigacion
         return d
+    
+
+    def __str__(self):
+        cadena = super().__str__()
+        cadena += "Area de investigacion: {0}\n".format(self.getAreaInvestigacion())
+        cadena += "Tipo de investigacion: {0}\n".format(self.getTipoInvestigacion())
+        return cadena

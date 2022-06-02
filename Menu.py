@@ -45,7 +45,8 @@ class Menu:
     def ingresarPersonal(self) -> Personal:
         unaPersona = None
         
-        cuil = input("Ingrese el cuil: ")
+#        cuil = input("Ingrese el cuil: ")
+        cuil = self.__ingresador.inputRegularExpression("Ingrese el cuil: ", "[0-9]{2,2}\-[0-9]{8,8}-[0-9]", "Cuil invalido, reintente: ")
         nombre = input("Ingrese el nombre: ")
         apellido = input("Ingrese el apellido: ")
         sueldoBasico = self.__ingresador.inputFloat("Ingrese el sueldo, en caso de incluir decimales use un punto: ", "Sueldo invalido, reintente: ")

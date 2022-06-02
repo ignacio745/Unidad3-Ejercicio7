@@ -25,6 +25,13 @@ class DocenteInvestigador(Docente, Investigador):
 
     def toJSON(self):
         d = super().toJSON()
-        d["__atributos__"]["categoriaIncentivos"] = self.__categoriaIncentivos
-        d["__atributos__"]["importeExtra"] = self.__importeExtra
+        d["__atributos__"]["categoriaIncentivos"] = self.getCategoriaIncentivos()
+        d["__atributos__"]["importeExtra"] = self.getImporteExtra()
         return d
+    
+
+    def __str__(self):
+        cadena = super().__str__()
+        cadena += "Categoria de incentivos: {0}\n".format(self.__categoriaIncentivos)
+        cadena += "Importe extra: {0:.2f}\n".format(self.__importeExtra)
+        return cadena 

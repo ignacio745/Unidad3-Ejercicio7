@@ -33,7 +33,15 @@ class Docente(Personal):
     
     def toJSON(self):
         d = super().toJSON()
-        d["__atributos__"]["carrera"] = self.__carrera
-        d["__atributos__"]["cargo"] = self.__cargo
-        d["__atributos__"]["catedra"] = self.__catedra
+        d["__atributos__"]["carrera"] = self.getCarrera()
+        d["__atributos__"]["cargo"] = self.getCargo()
+        d["__atributos__"]["catedra"] = self.getCatedra()
         return d
+    
+    
+    def __str__(self):
+        cadena = super().__str__()
+        cadena += "Carrera: {0}\n".format(self.__carrera)
+        cadena += "Cargo: {0}\n".format(self.__cargo)
+        cadena += "Catedra: {0}\n".format(self.__catedra)
+        return cadena

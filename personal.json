@@ -15,6 +15,17 @@
             }
         },
         {
+            "__class__": "PersonalApoyo",
+            "__atributos__": {
+                "cuil": "1-423324234-2",
+                "apellido": "Pe\u00f1a",
+                "nombre": "Juan",
+                "sueldoBasico": 50000000.0,
+                "antiguedad": 5,
+                "categoria": 21
+            }
+        },
+        {
             "__class__": "DocenteInvestigador",
             "__atributos__": {
                 "cuil": "40-22432423-1",
@@ -24,11 +35,23 @@
                 "antiguedad": 5,
                 "areaInvestigacion": "Data science",
                 "tipoInvestigacion": "Teorica",
-                "carrera": "Data science",
-                "cargo": "Teorica",
+                "carrera": "LCC",
+                "cargo": "Semiexclusivo",
                 "catedra": "Informatica",
                 "categoriaIncentivos": "V",
                 "importeExtra": 700000.0
+            }
+        },
+        {
+            "__class__": "Investigador",
+            "__atributos__": {
+                "cuil": "21-54545454-0",
+                "apellido": "Urizar",
+                "nombre": "Santiago",
+                "sueldoBasico": 900000.0,
+                "antiguedad": 3,
+                "areaInvestigacion": "Hacking",
+                "tipoInvestigacion": "Practica"
             }
         }
     ]
