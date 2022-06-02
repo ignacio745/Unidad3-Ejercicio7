@@ -1,0 +1,35 @@
+{
+    "__class__": "ColeccionPersonal",
+    "personas": [
+        {
+            "__class__": "Docente",
+            "__atributos__": {
+                "cuil": "20-43123315-1",
+                "apellido": "Benemerito",
+                "nombre": "Ignacio",
+                "sueldoBasico": 500000.0,
+                "antiguedad": 5,
+                "carrera": "LCC",
+                "cargo": "Exclusivo",
+                "catedra": "Informatica"
+            }
+        },
+        {
+            "__class__": "DocenteInvestigador",
+            "__atributos__": {
+                "cuil": "40-22432423-1",
+                "apellido": "Babsia",
+                "nombre": "Santiago",
+                "sueldoBasico": 60000000.0,
+                "antiguedad": 5,
+                "areaInvestigacion": "Data science",
+                "tipoInvestigacion": "Teorica",
+                "carrera": "Data science",
+                "cargo": "Teorica",
+                "catedra": "Informatica",
+                "categoriaIncentivos": "V",
+                "importeExtra": 700000.0
+            }
+        }
+    ]
+}
