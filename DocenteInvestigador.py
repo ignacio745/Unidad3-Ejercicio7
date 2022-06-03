@@ -35,3 +35,7 @@ class DocenteInvestigador(Docente, Investigador):
         cadena += "Categoria de incentivos: {0}\n".format(self.__categoriaIncentivos)
         cadena += "Importe extra: {0:.2f}\n".format(self.__importeExtra)
         return cadena 
+    
+
+    def getTipo(self) -> str:
+        return "Docente-Investigador"

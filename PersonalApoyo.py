@@ -31,3 +31,6 @@ class PersonalApoyo(Personal):
         cadena = super().__str__()
         cadena += "Categoria: {0}\n".format(self.__categoria)
         return cadena
+    
+    def getTipo(self) -> str:
+        return "Personal de apoyo"

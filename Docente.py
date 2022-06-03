@@ -45,3 +45,7 @@ class Docente(Personal):
         cadena += "Cargo: {0}\n".format(self.__cargo)
         cadena += "Catedra: {0}\n".format(self.__catedra)
         return cadena
+    
+
+    def getTipo(self) -> str:
+        return "Docente"

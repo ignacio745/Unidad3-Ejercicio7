@@ -53,10 +53,14 @@ class Personal(ABC):
 
     @abc.abstractmethod
     def __str__(self):
-        cadena = "Tipo de agente: {0}\n".format(self.__class__.__name__)
+        cadena = "Tipo de agente: {0}\n".format(self.getTipo())
         cadena += "Cuil: {0}\n".format(self.getCuil())
         cadena += "Apellido: {0}\n".format(self.getApellido())
         cadena += "Nombre {0}\n".format(self.getNombre())
         cadena += "Sueldo basico: {0:.2f}\n".format(self.getSueldoBasico())
         cadena += "Antiguedad: {0}\n".format(self.getAntiguedad())
         return cadena
+    
+    @abc.abstractmethod
+    def getTipo(self) -> str:
+        pass

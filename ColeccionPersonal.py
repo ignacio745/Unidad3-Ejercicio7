@@ -94,11 +94,10 @@ class ColeccionPersonal:
     
     
     def ordenarPersonal(self, metodoComparacion):
+        
         # La k conserva el primer nodo del ultimo par ordenado para saber si el ordenamiento ha terminado
         # La cota conserva el segundo nodo del ultimo par ordenado para saber si quedan nodos que ordenar en la iteracion actual
         # unNodo es el nodo que se esta ordenando actualmente
-        
-        
         if self.__comienzo != None:
             
             k = None
@@ -134,7 +133,7 @@ class ColeccionPersonal:
             El nombre de la carrera
         """
 
-        self.ordenarPersonal(Personal.getNombre)
+        self.ordenarPersonal(lambda unaPersona: unaPersona.getNombre())
         cadena = "{0:<20}{1:<20}{2:<20}{3:<20}{4:<20}\n".format("Cuil", "Apellido", "Nombre", "Categoria incentivos", "Importe extra")
         for unaPersona in self:
             if isinstance(unaPersona, DocenteInvestigador) and unaPersona.getCarrera().lower() == nombreCarrera.lower():
@@ -142,7 +141,7 @@ class ColeccionPersonal:
         return cadena
     
 
-    def contarDocentesInvestigadores(self, nombreAreaInvestigacion: str, clase) -> tuple:
+    def contarDocentesInvestigadores(self, nombreAreaInvestigacion: str) -> tuple:
         """
         Retorna una tupla con la cantidad de docentes investigadores y la cantidad de investigadores de un area de investigacion en ese orden.
         
@@ -164,21 +163,21 @@ class ColeccionPersonal:
 
 
     def getListadoPersonal(self):
-        self.ordenarPersonal(Personal.getApellido)
-        cadena = "{0:<20}{1:<20}{2:<20}{3:<20}\n".format("Nombre", "Apellido", "Tipo de agente", "Sueldo")
+        self.ordenarPersonal(lambda unaPersona: unaPersona.getApellido())
+        cadena = "{0:<20}{1:<20}{2:<25}{3:<20}\n".format("Nombre", "Apellido", "Tipo de agente", "Sueldo")
         for unaPersona in self:
-            cadena += "{0:<20}{1:<20}{2:<20}{3:<20}\n".format(unaPersona.getNombre(), unaPersona.getApellido(), unaPersona.__class__.__name__, unaPersona.getSueldo())
+            cadena += "{0:<20}{1:<20}{2:<25}{3:<20}\n".format(unaPersona.getNombre(), unaPersona.getApellido(), unaPersona.getTipo(), unaPersona.getSueldo())
         return cadena
     
 
     def getListadoDocentesInvestigadores(self, categoria: str):
-        cadena = "{0:<20}{1:<20}{2:<20}\n".format("Apellido", "Nombre", "Importe extra")
+        cadena = "{0:<23}{1:<23}{2:>20}\n".format("Nombre", "Apellido", "Importe extra")
         total = 0
         for unaPersona in self:
             if isinstance(unaPersona, DocenteInvestigador) and unaPersona.getCategoriaIncentivos().lower() == categoria.lower():
-                cadena += "{0:<20}{1:<20}{2:<20}\n".format(unaPersona.getApellido(), unaPersona.getNombre(), unaPersona.getImporteExtra())
+                cadena += "{0:<23}{1:<23}{2:20.2f}\n".format(unaPersona.getNombre(), unaPersona.getApellido(), unaPersona.getImporteExtra())
                 total += unaPersona.getImporteExtra()
-        cadena += "Importe total en concepto de incentivos: {0:.2f}\n".format(total)
+        cadena += "{0:46}{1:20.2f}\n".format("Importe total en concepto de incentivos: ".upper(), total)
         return cadena
     
 

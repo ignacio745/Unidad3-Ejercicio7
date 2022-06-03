@@ -31,3 +31,7 @@ class Investigador(Personal):
         cadena += "Area de investigacion: {0}\n".format(self.getAreaInvestigacion())
         cadena += "Tipo de investigacion: {0}\n".format(self.getTipoInvestigacion())
         return cadena
+    
+
+    def getTipo(self) -> str:
+        return "Investigador"

@@ -1,3 +1,4 @@
+import os
 from ColeccionPersonal import ColeccionPersonal
 from Personal import Personal
 from Docente import Docente
@@ -32,7 +33,7 @@ class Menu:
         func=self.__switcher.get(op, lambda: print("Opción no válida"))
         if op in ('1', '2', '3'):
             func(IColeccion(unaColeccionPersonal))
-        elif op in ('4', '5', '6'):
+        elif op in ('4', '5', '6', '7'):
             func(unaColeccionPersonal)
         else:
             func()
@@ -79,7 +80,7 @@ class Menu:
             unaPersona = Investigador(cuil, apellido, nombre, sueldoBasico, antiguedad, areaInvestigacion, tipoInvestigacion)
         
         elif tipo == "Docente-Investigador":
-            unaPersona = DocenteInvestigador(cuil, apellido, nombre, sueldoBasico, antiguedad, areaInvestigacion, tipoInvestigacion, catedra, areaInvestigacion, tipoInvestigacion, categoriaIncentivos, importeExtra)
+            unaPersona = DocenteInvestigador(cuil, apellido, nombre, sueldoBasico, antiguedad, carrera, cargo, catedra, areaInvestigacion, tipoInvestigacion, categoriaIncentivos, importeExtra)
         
         elif tipo == "Personal de apoyo":
             unaPersona = PersonalApoyo(cuil, apellido, nombre, sueldoBasico, antiguedad, categoria)
@@ -89,10 +90,10 @@ class Menu:
     def opcion1(self, unaColeccionpersonal: IColeccion):
         insertado = False
         unaPersona = self.ingresarPersonal()
-        posicion = self.__ingresador.inputInt("Ingrese la posicion en la que desea insertar el agente: ", "[ERROR] La posicion ingresada no es valida, reintente: ")
+        posicion = self.__ingresador.inputInt("Ingrese la posicion en la que desea insertar el agente, las posiciones empiezan en 1: ", "[ERROR] La posicion ingresada no es valida, reintente: ")
         while not insertado:
             try:
-                unaColeccionpersonal.insertarElemento(unaPersona, posicion)
+                unaColeccionpersonal.insertarElemento(unaPersona, posicion-1)
             except IndexError:
                 posicion = self.__ingresador.inputInt("[ERROR] La posicion ingresada no es valida, reintente: ", "[ERROR] La posicion ingresada no es valida, reintente: ")
             else:
@@ -109,15 +110,14 @@ class Menu:
 
 
     def opcion3(self, unaColeccionPersonas: IColeccion):
-        posicion = self.__ingresador.inputInt("Ingrese la posicion del agente que desea mostrar: ", "[ERROR] La posicion ingresada no es valida, reintente: ")
+        posicion = self.__ingresador.inputInt("Ingrese la posicion del agente que desea mostrar, las posiciones empiezan en 1: ", "[ERROR] La posicion ingresada no es valida, reintente: ")
         mostrado = False
-        while not mostrado:
-            try:
-                unaColeccionPersonas.mostrarElemento(posicion)
-            except IndexError:
-                posicion = self.__ingresador.inputInt("[ERROR] La posicion ingresada no es valida, reintente: ", "[ERROR] La posicion ingresada no es valida, reintente: ")
-            else:
-                mostrado = True
+        try:
+            unaColeccionPersonas.mostrarElemento(posicion-1)
+        except IndexError:
+            print("[ERROR] La posicion ingresada no es valida")
+        else:
+            mostrado = True
 
 
     
@@ -130,7 +130,7 @@ class Menu:
     def opcion5(self, unaColeccionPersonal: ColeccionPersonal):
         nombreAreaInvestigacion = input("Ingrese el area de investigacion: ")
         cantidades = unaColeccionPersonal.contarDocentesInvestigadores(nombreAreaInvestigacion)
-        print("Hay {0} docentes investigadores y {1} investigadores en el area {2}".format(cantidades[0], cantidades[1], nombreAreaInvestigacion))
+        print("Hay {0} docentes investigadores y {1} investigadores normales en el area {2}".format(cantidades[0], cantidades[1], nombreAreaInvestigacion.title()))
 
 
     def opcion6(self, unaColeccionPersonal: ColeccionPersonal):
@@ -143,16 +143,20 @@ class Menu:
 
 
     def ejecutarMenu(self, unaColeccionPersonal: ColeccionPersonal):
+            os.system("clear")
             opcion = "0"
             while opcion != "8":
                 print("Ingrese la opcion deseada")
                 print("[1] Insertar un agente en una posicion determinada")
                 print("[2] Agregar un agente a la coleccion")
                 print("[3] Mostrar un agente dada una posicion de la lista")
-                print("[4] Generar un listado de los agentes que se desempeñan como docentes investigadores dado un nombre de carrera")
+                print("[4] Generar un listado ordenado por nombre de los agentes que se desempeñan como docentes investigadores dado un nombre de carrera")
                 print("[5] Dada un area de investigacion, contar la cantidad de agentes que son docente investigador, y la cantidad de investigadores que trabajen en ese area")
                 print("[6] Generar un listado que muestre nombre y apellido, tipo de agente y sueldo de todos los agentes, ordenado por apellido")
                 print("[7] Dada una categoria de investigacion, listar apellido, nombre e importe extra por docencia e investigacion de todos los docentes investigadores que poseen esa categoria y mostrar el total de dindero que la Secretaria de Investigavion debe solicitar al Ministerio en concepto de importe extra que cobran los docentes investigadores de la categoria solicitada")
                 print("[8] Guardar y salir")
                 opcion = input("--> ")  
+                os.system("clear")
                 self.opcion(unaColeccionPersonal, opcion)
+                input("Presione enter para continuar")
+                os.system("clear")

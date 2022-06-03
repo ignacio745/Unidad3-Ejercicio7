@@ -2,6 +2,23 @@
     "__class__": "ColeccionPersonal",
     "personas": [
         {
+            "__class__": "DocenteInvestigador",
+            "__atributos__": {
+                "cuil": "20-55555555-2",
+                "apellido": "Gentili",
+                "nombre": "Emi",
+                "sueldoBasico": 6000000.0,
+                "antiguedad": 2,
+                "areaInvestigacion": "Uso de la Inteligencia Artificial en el cuerpo humano",
+                "tipoInvestigacion": "Practica",
+                "carrera": "medicina",
+                "cargo": "Semiexclusivo",
+                "catedra": "etica medica",
+                "categoriaIncentivos": "V",
+                "importeExtra": 30000.0
+            }
+        },
+        {
             "__class__": "Docente",
             "__atributos__": {
                 "cuil": "20-43123315-1",
@@ -23,6 +40,40 @@
                 "sueldoBasico": 50000000.0,
                 "antiguedad": 5,
                 "categoria": 21
+            }
+        },
+        {
+            "__class__": "DocenteInvestigador",
+            "__atributos__": {
+                "cuil": "20-77777777-1",
+                "apellido": "De Los Rios",
+                "nombre": "Leonardo",
+                "sueldoBasico": 7000000.0,
+                "antiguedad": 5,
+                "areaInvestigacion": "Computacion cuantica",
+                "tipoInvestigacion": "Teorica",
+                "carrera": "LSI",
+                "cargo": "Semiexclusivo",
+                "catedra": "Inteligencia Artificial",
+                "categoriaIncentivos": "IV",
+                "importeExtra": 50000.0
+            }
+        },
+        {
+            "__class__": "DocenteInvestigador",
+            "__atributos__": {
+                "cuil": "21-44555555-1",
+                "apellido": "Cuk",
+                "nombre": "Milko",
+                "sueldoBasico": 7000000.0,
+                "antiguedad": 3,
+                "areaInvestigacion": "Modelos de Inteligencia Artificial",
+                "tipoInvestigacion": "Teorica",
+                "carrera": "LCC",
+                "cargo": "Exclusivo",
+                "catedra": "Matematica",
+                "categoriaIncentivos": "IV",
+                "importeExtra": 300000.0
             }
         },
         {
